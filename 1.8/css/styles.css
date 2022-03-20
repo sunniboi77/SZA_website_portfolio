@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #357b70;
+  --secondary-color: darkgoldenrod;
+  --dark-grey: darkgrey;
+  --button-green: green;
+  --base-color: white;
+  --nav-color:lightgray;
+  --svg-color0: khaki;
+  --svg-color1: yellow;
+  --svg-color2: darkorange;
+  --header-font-weight: 700;
+}
+
+main {
+  font-family: 'Hubbali', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+    /* Sets the font size to 16px */
+  line-height: 1.6;
+    /* Sets the line-height to 1.6 */
+  }
+
+h1 {
+  text-decoration: underline;
+  font-size: 30px;
+  font-weight: var(--header-font-weight);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: var(--header-font-weight);
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: var(--header-font-weight);
+}
+
+p{
+  font-style: italic;
+  font-size: 14px;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover, a:focus {
+    /* No underlining when hovering over a link */
+    text-decoration: none;
+  }
+
+a:visited {
+  /* visited link */
+  color: var(--base-color);
+}
+
+a:active {
+  /* selected link */
+  color: var(--button-green);
+}
+
+
+button, .button {
+  /* overwrites browser defaults and resets the border */
+  border: 10px var(--dark-grey);
+  border-radius:45px;
+  /* takes the font from the outer container */
+  font-family: inherit;
+  /* styles the background color, font color, and text decoration (underline, etc.) of the button */
+  background-color:var(--button-green);
+  color: var(--base-color);
+  text-decoration: none;
+  /*adds spacing to the button (this will be discussed more in-depth later) */
+  padding: 15px;
+  box-shadow: 5px 5px 4px 4px var(--dark-grey);
+  /* gives the button a bottom border with a width of 2px, a type of solid, and a color in RGBA format */
+  
+  transition-duration: 3s;
+  transition-property: opacity;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+  /* lets the mouse appear as a hand when hovering over the button */
+  cursor: pointer;
+  /* reduces the opacity of the button to 80% */
+  opacity: 0.2;
+}
+
+.button__secondary {
+  background-color: var(--secondary-color);
+  color:var(--base-color);
+}
+
+
+.navigation-list__item--active{
+  text-decoration:  none;
+
+}
+
+.navigation-list{
+  background-color:var(--nav-color);
+  margin-left: 0px;
+  margin:0px;
+  }
+
+
+.navigation-list li {
+  display: inline-block;
+  margin-left: 15px;
+  color: pink; /*var(--base-color)*/
+}
+
+.navigation-list li:first-child {
+  position: relative;
+  bottom: -5px;
+}
+
+.navigation-list li :hover{
+  background-coloR:var(--dark-grey);
+  color:darkwhite;
+  letter-spacing:5px;
+  transition: letter-spacing  .5s linear;
+}
+
+
+.profile__portrait {
+  float: left;
+  width: 250px;
+  min-width:  150px;
+  max-width: 1000px;
+  margin-right: 40px;
+  height:auto;
+  border-radius:50%;
+}
+
+.profile {
+  max-width:700px;
+  margin: 0 auto;
+}
+
+.profile-text {
+  flex: 1 1 700px;
+}
+
+.page-header {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding: 20px;
+}
+
+.page-header__item {
+	flex: 0 1 200px;
+	height: 70px;
+}
+
+.page-header__item:last-child {
+	flex-grow: 1;
+	text-align: right;
+}
+
+.Links{
+  display: flex;
+  flex:wrap;
+  margin: 10px;  
+  flex: 2 2 auto;
+}
+
+.page-footer{
+  clear:both;
+  display:flex;
+  flex-direction:column-reverse;
+  text-align:center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.grid__item {
+  background-color: var(--nav-color);
+}
+
+.grid__item:last-child {
+  grid-column: 3 / 3;
+  grid-row: 1 / 3;
+}
+
+@keyframes color-change {
+  0% {
+    fill: var(--svg-color0) ;
+  }
+  50% { 
+    fill:var(--svg-color1) ;
+  }
+  100% {
+    fill: var(--svg-color2);
+  }
+}
+
+.sun {
+  animation-duration: 4s;
+  animation-name: color-change;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes cloud-move {
+  from {
+    transform: translate(0, 50px);
+  }
+  to {
+    transform: translate(200px, 50px);
+  }
+}
+
+.cloud-front {
+  animation-duration: 30s;
+  animation-name: cloud-move;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@media all and (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media all and (min-width: 500px) and (max-width: 750px){
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media all and (max-width: 750px) {
+  .grid {
+    grid-gap: 10px;
+  }
+  .grid__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+  h1 {
+    font-size: 22px;
+  }
+}
